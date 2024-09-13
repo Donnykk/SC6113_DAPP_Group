@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="decentralized-ntu-ticketing-system">Decentralized NTU Ticketing System</h1>
+<h2 id="1-project-proposal">1. Project Proposal</h2>
+<p>This project is a decentralized ticketing system designed for university events. The system utilizes blockchain technology to issue tickets as NFTs, ensuring security and transparency in ticket sales and transfers. It addresses common problems like ticket fraud and scalping.</p>
+<p>Main features:</p>
+<ul>
+<li><strong>NFT Tickets</strong>: Each ticket is issued as a non-fungible token.</li>
+<li><strong>Pre-sale and Public-sale</strong>: Supports phased ticket sales.</li>
+<li><strong>Ticket Validation</strong>: Built-in verification system to confirm ticket authenticity.</li>
+<li><strong>Secondary Market</strong>: Allows users to resell tickets securely.</li>
+</ul>
+<h2 id="2-research-and-literature-review">2. Research and Literature Review</h2>
+<h2 id="3-technology-and-tools">3. Technology and Tools</h2>
+<p><strong>Blockchain Platform:</strong></p>
+<ul>
+<li>Ethereum</li>
+</ul>
+<p><strong>Dev Tools:</strong></p>
+<ul>
+<li>Front-end: <em>HTML, CSS</em></li>
+<li>Back-end: <em>Python with Flask, Node.js</em></li>
+<li>Smart Contract: <em>Solidity</em></li>
+</ul>
+<h2 id="4-prototype-and-design">4. Prototype and Design</h2>
+<h3 id="41-user-login">4.1 User Login</h3>
+<p>In the Decentralized NTU Ticketing System, users should only be allowed to login with wallet, which eliminates the need for traditional username/password.</p>
+<p>A simple login page which link to metamask is required:</p>
+<p><img src="file:///workspaces/SC6113_DAPP_Group/img/login.png" alt=""></p>
+<h3 id="42-primary-market">4.2 Primary Market</h3>
+<h4 id="421-nft-minting-purchasing">4.2.1 NFT Minting (Purchasing)</h4>
+<p>When users purchase a ticket, the system mints an NFT representing the ticket on the blockchain. This ensures each ticket is unique, tamper-proof, and verifiable on-chain. Users can view their NFT tickets in their digital wallet.</p>
+<p>Some key values should be clarified:</p>
+<ul>
+<li><strong>Max Supply</strong>: Limit amount of ticket supply (modified only by owner)</li>
+<li><strong>Max mint amount per TXN</strong>: Maximum quantity per transaction (modified only by owner)</li>
+</ul>
+<h4 id="1-pre-sale-and-whitelist">(1) Pre-sale and Whitelist</h4>
+<p>This Pre-sale function is designed to allow only wallets on the whitelist to participate in the phase, ensuring exclusive access. Whitelisted users can claim the items for free during the presale period.</p>
+<p>The key properties include:</p>
+<ul>
+<li><strong>Whitelist Management</strong>: Admins can add or remove wallet addresses from the whitelist.</li>
+<li><strong>Presale Duration</strong>: Configurable with either block numbers or timestamps to define the presale window.</li>
+<li><strong>Whitelist Check</strong>: Users' wallet addresses are checked against the whitelist before they can proceed.</li>
+</ul>
+<p>This ensures controlled, secure access during pre-sales.</p>
+<h4 id="2-public-sale">(2) Public-sale</h4>
+<p>The public-sale phase is designed to allow unrestricted access to all users once the pre-sale ends. Tickets are available at a set Price Per Token. This ensures equal opportunities for all participants in the public sale phase.</p>
+<h4 id="422-asset-verify-ticket-verify">4.2.2 Asset Verify (Ticket Verify)</h4>
+<p>Asset Verify is required to ensure that each ticket (NFT) is legitimate, belongs to the user. Users are allowed to check all the assets available. The function also ensures the ticket hasn’t been used or transferred improperly, preventing fraudulent entries.</p>
+<ul>
+<li><strong>Transferability</strong>: Users can transfer their tokens to other wallets through secure blockchain transactions. Ownership updates in real-time.</li>
+</ul>
+<p>Here is a front-page structure of the primary market after log in:
+<img src="file:///workspaces/SC6113_DAPP_Group/img/prim.png" alt=""></p>
+<h3 id="43-secondary-market">4.3 Secondary market</h3>
+<h4 id="431-list-ticket-for-saleapproveset-price">4.3.1 List ticket for sale/Approve/Set price</h4>
+<p>Secondary market allows users to trade NFTs, main features include:</p>
+<ul>
+<li>List ticket for sale</li>
+<li>Approve/Set price</li>
+<li>Batch list</li>
+<li>Delist revoke</li>
+<li>Buy ticket</li>
+<li>Transfer</li>
+</ul>
+<p>A front-end page for seller should cover the functions below: List, Batch-list, Remove, Batch-remove and Change price</p>
+<p><img src="file:///workspaces/SC6113_DAPP_Group/img/sec.png" alt="">
+<img src="file:///workspaces/SC6113_DAPP_Group/img/sec1.png" alt="">
+<img src="file:///workspaces/SC6113_DAPP_Group/img/sec2.png" alt=""></p>
+<p>For buyers, search and purchase is needed:
+<img src="file:///workspaces/SC6113_DAPP_Group/img/sec3.png" alt=""></p>
+<h2 id="5-development">5. Development</h2>
+<h2 id="6-ethical-considerations-and-compliance">6. Ethical Considerations and Compliance</h2>
+<h3 id="61-data-privacy">6.1 Data Privacy</h3>
+<p>Sensitive Data Handling: Ensure that personal information of users, such as names and payment details, is encrypted and stored securely. Use pseudonymous identifiers where possible to protect user identities.</p>
+<h3 id="62-smart-contract-security">6.2 Smart Contract Security</h3>
+<p>Regularly audit smart contracts to identify and fix potential vulnerabilities or bugs. Ensure that contracts operate as intended and do not expose user data to unnecessary risks.</p>
+<p>Design smart contracts to prioritize user security and fairness. Avoid any mechanisms that could exploit or disadvantage users.</p>
+<h3 id="63-ethical-research-approval">6.3 Ethical Research Approval</h3>
+<p>Obtain necessary approvals from the NTU ethics review board before initiating the project. Ensure that the project aligns with the university's ethical research standards.</p>
+<h3 id="64-smart-contract-legality">6.4 Smart Contract Legality</h3>
+<p>Ensure that smart contracts and blockchain transactions comply with Singapore laws, including those related to financial transactions and consumer protection.</p>
+<p>By addressing these ethical considerations and ensuring compliance with relevant guidelines, the decentralized ticketing system can operate responsibly and uphold high standards of integrity and user trust.</p>
+
+</body>
+</html>

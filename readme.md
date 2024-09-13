@@ -14,19 +14,100 @@ Main features:
 
 ## 3. Technology and Tools
 
-**Blockchain Platform:** Ethereum
+**Blockchain Platform:**
+- Ethereum
 
 **Dev Tools:**
 - Front-end: *HTML, CSS*
 - Back-end: *Python with Flask, Node.js*
 - Smart Contract: *Solidity*
 
-## 4. Design and Development
+## 4. Prototype and Design
 
-### 4.1 Prototypes
+### 4.1 User Login
+In the Decentralized NTU Ticketing System, users should only be allowed to login with wallet, which eliminates the need for traditional username/password.
 
-#### 4.1.1 Pre-sale and Public-sale
-The system should supports both pre-sale and public-sale phases. During the presale,  can purchase tickets before they are available to the general public. Afterward, the public sale opens, allowing all users to buy tickets directly from the platform.
+A simple login page which link to metamask is required:
 
-#### 4.1.2 NFT Minting
+![](./img/login.png)
+
+### 4.2 Primary Market
+
+#### 4.2.1 NFT Minting (Purchasing)
+
 When users purchase a ticket, the system mints an NFT representing the ticket on the blockchain. This ensures each ticket is unique, tamper-proof, and verifiable on-chain. Users can view their NFT tickets in their digital wallet.
+
+Some key values should be clarified:
+- **Max Supply**: Limit amount of ticket supply (modified only by owner)
+- **Max mint amount per TXN**: Maximum quantity per transaction (modified only by owner)
+
+#### (1) Pre-sale and Whitelist
+This Pre-sale function is designed to allow only wallets on the whitelist to participate in the phase, ensuring exclusive access. Whitelisted users can claim the items for free during the presale period.
+
+The key properties include:
+
+- **Whitelist Management**: Admins can add or remove wallet addresses from the whitelist.
+- **Presale Duration**: Configurable with either block numbers or timestamps to define the presale window. 
+- **Whitelist Check**: Users' wallet addresses are checked against the whitelist before they can proceed.
+
+This ensures controlled, secure access during pre-sales.
+
+#### (2) Public-sale
+The public-sale phase is designed to allow unrestricted access to all users once the pre-sale ends. Tickets are available at a set Price Per Token. This ensures equal opportunities for all participants in the public sale phase.
+
+#### 4.2.2 Asset Verify (Ticket Verify)
+Asset Verify is required to ensure that each ticket (NFT) is legitimate, belongs to the user. Users are allowed to check all the assets available. The function also ensures the ticket hasn’t been used or transferred improperly, preventing fraudulent entries.
+
+- **Transferability**: Users can transfer their tokens to other wallets through secure blockchain transactions. Ownership updates in real-time.
+
+Here is a front-page structure of the primary market after log in:
+![](./img/prim.png)
+
+### 4.3 Secondary market
+
+#### 4.3.1 List ticket for sale/Approve/Set price
+Secondary market allows users to trade NFTs, main features include:
+- List ticket for sale
+- Approve/Set price
+- Batch list
+- Delist revoke
+- Buy ticket
+- Transfer
+
+A front-end page for seller should cover the functions below: List, Batch-list, Remove, Batch-remove and Change price
+
+![](./img/sec.png)
+![](./img/sec1.png)
+![](./img/sec2.png)
+
+For buyers, search and purchase is needed:
+![](./img/sec3.png)
+
+## 5. Development
+
+## 6. Ethical Considerations and Compliance
+
+### 6.1 Data Privacy
+
+Sensitive Data Handling: Ensure that personal information of users, such as names and payment details, is encrypted and stored securely. Use pseudonymous identifiers where possible to protect user identities.
+
+### 6.2 Smart Contract Security
+
+Regularly audit smart contracts to identify and fix potential vulnerabilities or bugs. Ensure that contracts operate as intended and do not expose user data to unnecessary risks.
+
+Design smart contracts to prioritize user security and fairness. Avoid any mechanisms that could exploit or disadvantage users.
+
+### 6.3 Ethical Research Approval
+
+Obtain necessary approvals from the NTU ethics review board before initiating the project. Ensure that the project aligns with the university's ethical research standards.
+
+### 6.4 Smart Contract Legality
+
+Ensure that smart contracts and blockchain transactions comply with Singapore laws, including those related to financial transactions and consumer protection.
+
+By addressing these ethical considerations and ensuring compliance with relevant guidelines, the decentralized ticketing system can operate responsibly and uphold high standards of integrity and user trust.
+
+ 
+
+ 
+
