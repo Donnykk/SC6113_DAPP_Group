@@ -1,5 +1,13 @@
 # Decentralized NTU Ticketing System
 
+**Group 15:** 
+- Yinhaobai-G2406295J  
+- TangPengcheng-G2403819E 
+- Kuang Chufeng-G2403244B
+- Zhang Haifeng-G2403334F     
+- Ling Wenke-G2304906C
+
+
 ## 1. Project Proposal
 
 This project is a decentralized ticketing system designed for university events. The system utilizes blockchain technology to issue tickets as NFTs, ensuring security and transparency in ticket sales and transfers. It addresses common problems like ticket fraud and scalping.
@@ -12,12 +20,19 @@ Main features:
 - **Secondary Market**: Allows users to resell tickets securely.
 
 ## 2. Research and Literature Review
+The event ticketing system has long been plagued by issues such as ticket fraud, counterfeiting, scalping, and lack of transparency. Traditional centralized ticketing systems rely on intermediaries, which often leads to inflated ticket prices, inefficiencies, and reduced trust. Blockchain technology, particularly through DApps, offers a transformative solution by issuing tickets as non-fungible tokens (NFTs), ensuring secure, transparent, and efficient ticketing processes.
+
+Numerous studies emphasize the potential of blockchain to revolutionize the ticketing industry. [Swan (2015)](https://www.academia.edu/44112222/Melanie_Swan_Blockchain_BLUEPRINT_FOR_A_NEW_ECONOMY) discusses the broader application of blockchain in various industries, including ticketing, pointing out that blockchain's transparency and trustless nature make it a perfect fit for addressing issues in event ticketing.
+
+Despite its potential, the adoption of blockchain in ticketing is not without challenges. [Gervais(2016)](https://dl.acm.org/doi/10.1145/2976749.2978341)  highlight scalability and cost as significant barriers to mass adoption. Gas fees on Ethereum can make ticket purchases and transfers prohibitively expensive, especially during times of high network congestion.
+
+[Opensea](https://opensea.io/) is an excellent real-world example. OpenSea operates as a blockchain-based marketplace where users can trade various digital assets, including art, collectibles, in-game items, and virtual real estate. It supports multiple blockchains, including Ethereum, Polygon, and Klaytn. It's core features include NFT Trading, Create and Mint NFTs, Market Discovery, Auctions and Pricing, Collection Management.Since its launch, OpenSea has rapidly become one of the largest NFT marketplaces globally, significantly impacting the digital art and blockchain sectors. It has facilitated the growth of the NFT market and the rise of the creator economy.
 
 ## 3. Technology and Tools
 
 **Blockchain Platform:**
 
-- Ethereum
+- <img src="./img/ethereum-eth-logo.png" width="12" height="12"> Ethereum
 
 **Dev Tools:**
 
@@ -60,7 +75,7 @@ This ensures controlled, secure access during pre-sales.
 
 #### (2) Public-sale
 
-The public-sale phase is designed to allow unrestricted access to all users once the pre-sale ends. Tickets are available at a set Price Per Token. This ensures equal opportunities for all participants in the public sale phase.
+The public-sale phase is designed to alloTest and Deployw unrestricted access to all users once the pre-sale ends. Tickets are available at a set Price Per Token. This ensures equal opportunities for all participants in the public sale phase.
 
 #### 4.2.2 Asset Verify (Ticket Verify)
 
@@ -173,12 +188,68 @@ The core function of the secondary market implemented as below:
 ```
 
 ### 5.2 Front-end Development
+We use HTML+JS to implement front-end page.Our design concept is to build simple and clear page that includes comprehensive ticketing functionality with a well-organized and structured layout.
+
+JS.Web3 API enables our system to run on Ethereum, smart contracts are converted into ABI for front-end function calls. 
+
+E.g. The transfer button implemented with safeTransferFrom method:
+
+**ABI**
+```
+{
+	"inputs": [
+		{
+			"internalType": "address",
+			"name": "from",
+			"type": "address"
+		},
+		{
+			"internalType": "address",
+			"name": "to",
+			"type": "address"
+		},
+		{
+			"internalType": "uint256",
+			"name": "tokenId",
+			"type": "uint256"
+		}
+	],
+	"name": "safeTransferFrom",
+	"outputs": [],
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+```
+
+**JS call**
+```
+//transfer the token to another wallet
+document.getElementById('transfer').onclick = async () => {
+
+	const selectedtoken = document.getElementById("tokenDropdown").value; //select one token from the assets list just verified previously
+    const toAddress = document.getElementById("addressInput").value; // input the destination address
+    try{
+		await contract.methods.safeTransferFrom(account, toAddress, selectedtoken).send({ from: account });//call the transfer method of the contract
+		alert("Successfully transferred")
+	}catch (error) {
+        console.error('Error transfering tokens', error);
+    }
+};
+```
+
 
 ### 5.3 Back-end Development
 
-### 5.4 Test and Deploy
+In order to ensure that our system is compatible and accessible on mobile devices, we need to deploy the service on Render, allowing access from different devices. Therefore, a Python script built with Flask is needed as the backend.As the smart contract. Since the smart contracts essentially perform the back-end responsibilities, the script only needs to call the interface to render the front-end pages.
 
-At first we test our system through local **http-server** for convenience
+```
+@app.route('/',methods=["get","post"])
+def index():
+    return render_template('index.html')
+```
+
+After deploying on Render, users can access the system on their mobile device.
+
 
 ## 6. Ethical Considerations and Compliance
 
@@ -201,3 +272,8 @@ Obtain necessary approvals from the NTU ethics review board before initiating th
 Ensure that smart contracts and blockchain transactions comply with Singapore laws, including those related to financial transactions and consumer protection.
 
 By addressing these ethical considerations and ensuring compliance with relevant guidelines, the decentralized ticketing system can operate responsibly and uphold high standards of integrity and user trust.
+
+## 7. Reflection
+The development of the decentralized ticketing system has been an insightful journey, with both challenges and valuable learning experiences. We manage to create a solution that addressed common issues in the traditional ticketing systems, such as ticket fraud, scalping, and lack of transparency, by leveraging blockchain technology to issue tickets as NFTs.
+
+We've learnt that security considerations are paramount when dealing with blockchain applications, as smart contracts are immutable and cannot be easily modified once deployed. Conducting thorough security audits and deploying on test networks first was an essential part of the learning process.
